@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class BerlandeskRegistration {
+public class BerlandeskRegistration {//4c
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
