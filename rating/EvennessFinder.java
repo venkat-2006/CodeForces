@@ -23,7 +23,7 @@ public class EvennessFinder {//25A
        
         for (int i = 0; i < n; i++) {
             if (numbers[i] % 2 != majorityParity) {
-                System.out.println(i + 1); //
+                System.out.println(i + 1); 
                 break;
             }
         }
