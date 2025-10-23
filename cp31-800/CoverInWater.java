@@ -7,21 +7,19 @@ public class CoverInWater {//1900A
         while (t-- > 0) {
             int n = sc.nextInt();
             String s = sc.next();
-            int ans = 0;
-            int i = 0;
-            while (i < n) {
-                if (s.charAt(i) == '#') {
-                    i++;
-                    continue;
-                }
-                int len = 0;
-                while (i < n && s.charAt(i) == '.') {
-                    len++;
-                    i++;
-                }
-                ans += (len + 2) / 3;
+
+            int dots = 0;
+            for (char c : s.toCharArray()) {
+                if (c == '.') dots++;
             }
-            System.out.println(ans);
+
+            if (dots == 0) {
+                System.out.println(0);
+            } else if (s.contains("...")) {
+                System.out.println(2);
+            } else {
+                System.out.println(dots);
+            }
         }
         sc.close();
     }
