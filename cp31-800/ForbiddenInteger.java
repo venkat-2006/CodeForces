@@ -1,59 +1,44 @@
+
 import java.util.*;
-public class ForbiddenInteger { // 1845A
+public class ForbiddenInteger {//1845A
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int x = sc.nextInt();
-
-        while (x-- > 0) {
-            int a = sc.nextInt();
-            int b = sc.nextInt();
-            int c = sc.nextInt();
-
-            int z = 0;
-            int count = 0;
-            boolean ans = true;
+        int t = sc.nextInt();
+ 
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            int k = sc.nextInt();
+            int x = sc.nextInt();
+ 
             List<Integer> result = new ArrayList<>();
-
-            while (a - z > 0 && b > 0) { 
-                if (a / b > 0 && b != c) {
-                    int times = a / b;
-                    z += times * b;
-                    count += times;
-                    for (int i = 0; i < times; i++) {
-                        result.add(b);
+            boolean ok = true;
+ 
+            if (x != 1) {
+                // Case 1: 1 allowed
+                for (int i = 0; i < n; i++) result.add(1);
+            } else {
+                // Case 2: 1 forbidden
+                if (k == 1) ok = false;
+                else if (k == 2 && n % 2 == 1) ok = false;
+                else {
+                    if (n % 2 == 0) {
+                        for (int i = 0; i < n / 2; i++) result.add(2);
+                    } else {
+                        result.add(3);
+                        for (int i = 0; i < (n - 3) / 2; i++) result.add(2);
                     }
                 }
-                b--;
-
-                
-                if (z >= a) break;
             }
-
-           
-            int rem = a - z;
-            if (rem > 0) {
-                if (rem == c) ans = false;
-                else {
-                    result.add(rem);
-                    count++;
-                }
-            }
-
-           
-            if (a - z == 1 && c == 1) ans = false;
-
-            if (ans && z + (a - z) == a) {
-                System.out.println("YES");
-                System.out.println(count);
-                for (int i = 0; i < result.size(); i++) {
-                    System.out.print(result.get(i) + " ");
-                }
-                System.out.println(); 
-            } else {
+ 
+            if (!ok) {
                 System.out.println("NO");
+            } else {
+                System.out.println("YES");
+                System.out.println(result.size());
+                for (int num : result) System.out.print(num + " ");
+                System.out.println();
             }
         }
-
         sc.close();
     }
 }
