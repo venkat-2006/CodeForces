@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class TwoPermutations {//1761A
+public class TwoPermutations {//1761A ;)
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int t = scanner.nextInt();
