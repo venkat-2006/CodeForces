@@ -1,0 +1,4 @@
+✅ CP31 — 800 Rated Problems Completed 💪
+
+This folder contains all my solutions to the CP31 800-rated problems (TLE Sheet).
+Each problem helped strengthen my fundamentals in logic building, pattern observation, implementation, and problem-solving speed
