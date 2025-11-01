@@ -1,48 +1,46 @@
-import java.util.*;
-
-public class Forked {//1904A
+import java.util.Scanner;
+import java.util.HashSet;
+ 
+public class Forked {
+    // possible move directions (used for generating attack positions)
+    static int[] dx = {-1, 1, -1, 1};
+    static int[] dy = {-1, -1, 1, 1};
+ 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt(); // number of test cases
-
+        int t = sc.nextInt();
+ 
         while (t-- > 0) {
-            int a = sc.nextInt();
-            int b = sc.nextInt();
-
-            int xK = sc.nextInt();
-            int yK = sc.nextInt();
-
-            int xQ = sc.nextInt();
-            int yQ = sc.nextInt();
-
-            // 8 possible knight moves
-            int[] dx = {a, a, -a, -a, b, b, -b, -b};
-            int[] dy = {b, -b, b, -b, a, -a, a, -a};
-
-            // store all 8 positions that can attack the king
-            int[][] king = new int[8][2];
-            for (int i = 0; i < 8; i++) {
-                king[i][0] = xK + dx[i];
-                king[i][1] = yK + dy[i];
+            long a = sc.nextLong();
+            long b = sc.nextLong();
+            long xK = sc.nextLong(), yK = sc.nextLong();
+            long xQ = sc.nextLong(), yQ = sc.nextLong();
+ 
+            // HashSets to store all cells attacked by the knight
+            HashSet<String> kingHits = new HashSet<>();
+            HashSet<String> queenHits = new HashSet<>();
+ 
+            for (int j = 0; j < 4; j++) {
+                // add positions that can attack the king
+                kingHits.add((xK + dx[j] * a) + "_" + (yK + dy[j] * b));
+                kingHits.add((xK + dx[j] * b) + "_" + (yK + dy[j] * a));
+ 
+                // add positions that can attack the queen
+                queenHits.add((xQ + dx[j] * a) + "_" + (yQ + dy[j] * b));
+                queenHits.add((xQ + dx[j] * b) + "_" + (yQ + dy[j] * a));
             }
-
+ 
             int count = 0;
-            // check all 8 positions that can attack the queen
-            for (int i = 0; i < 8; i++) {
-                int x = xQ + dx[i];
-                int y = yQ + dy[i];
-
-                // compare with each king position
-                for (int j = 0; j < 8; j++) {
-                    if (x == king[j][0] && y == king[j][1]) {
-                        count++;
-                    }
+            // count common positions
+            for (String pos : kingHits) {
+                if (queenHits.contains(pos)) {
+                    count++;
                 }
             }
-
+ 
             System.out.println(count);
         }
-
+ 
         sc.close();
     }
 }
