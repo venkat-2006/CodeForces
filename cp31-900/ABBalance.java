@@ -4,7 +4,7 @@ public class ABBalance {//1606A
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
-        
+        sc.nextLine(); // consume newline left after reading integer
         while (t-- > 0) {
             String s = sc.nextLine();
             int ab = 0, ba = 0;
