@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class YarikAndArray { // 1899C kadane modification 
+public class YarikAndArray { // 1899C like kadane!
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -14,14 +14,12 @@ public class YarikAndArray { // 1899C kadane modification
                 arr[i] = sc.nextInt();
             }
 
-            
             long currentSum = arr[0];
             long maxSum = arr[0];
 
             for (int i = 1; i < n; i++) {
 
-                
-                if ((arr[i] % 2) != (arr[i - 1] % 2)) {
+                if (Math.abs(arr[i]) % 2 != Math.abs(arr[i - 1]) % 2) {
                     currentSum = Math.max(arr[i], currentSum + arr[i]);
                 } else {
                     currentSum = arr[i];
