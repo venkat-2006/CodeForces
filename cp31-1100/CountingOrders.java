@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class CountingOrders {//1827A
     static final long MOD = 1000000007L;
 
