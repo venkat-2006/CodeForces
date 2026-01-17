@@ -19,10 +19,6 @@ public class Candies { // 1669F
             int ans = 0;
 
             while (i <= j) {
-                if (left == right) {
-                    ans = Math.max(ans, eatenLeft + eatenRight);
-                }
-
                 if (left <= right) {
                     left += arr[i];
                     eatenLeft++;
@@ -32,10 +28,15 @@ public class Candies { // 1669F
                     eatenRight++;
                     j--;
                 }
+
+                if (left == right) {
+                    ans = Math.max(ans, eatenLeft + eatenRight);
+                }
             }
 
             System.out.println(ans);
         }
+
         sc.close();
     }
 }
