@@ -1,5 +1,5 @@
 import java.util.*;
-public class ArrayColoring {//1857A
+public class ArrayColorings {//1857A
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
