@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class VikaBridge { // 1848B
+public class VikaBridge {//1848B
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
@@ -50,7 +50,7 @@ public class VikaBridge { // 1848B
                     secondLargest = lastGap;
                 }
                 
-                int best = Math.max(secondLargest, (largest + 1) / 2);
+                int best = Math.max(secondLargest, largest / 2);
                 answer = Math.min(answer, best);
             }
             
