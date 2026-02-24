@@ -47,6 +47,7 @@ public class ContrastValue {//1832C
             }
 
             System.out.println(ans);
+            sc.close();
         }
     }
 }
