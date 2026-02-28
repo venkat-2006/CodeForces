@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class MirrorGrid { // 1703E
+public class MirrorGrid {//1703E
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
@@ -20,7 +20,7 @@ public class MirrorGrid { // 1703E
             int ans = 0;
 
             for (int i = 0; i < n / 2; i++) {
-                for (int j = 0; j < n / 2; j++) {
+                for (int j = i; j < n - i - 1; j++) {
 
                     int a = arr[i][j];
                     int b = arr[j][n - 1 - i];
