@@ -1,41 +1,60 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class MirrorGrid {//1703E
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int t = scanner.nextInt();
 
-        while (t-- > 0) {
+		while (t-- > 0) {
+			int n = scanner.nextInt();
 
-            int n = sc.nextInt();
-            int[][] arr = new int[n][n];
+			char[][] mat = new char[n][n];
 
-            for (int i = 0; i < n; i++) {
-                String s = sc.next();
-                for (int j = 0; j < n; j++) {
-                    arr[i][j] = s.charAt(j) - '0';
-                }
-            }
+			for (int i = 0; i < n; i++) {
+				String row = scanner.next();
+				for (int j = 0; j < n; j++) {
+					mat[i][j] = row.charAt(j);
+				}
+			}
 
-            int ans = 0;
+			int ans = 0;
 
-            for (int i = 0; i < n / 2; i++) {
-                for (int j = i; j < n - i - 1; j++) {
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < n; j++) {
+					int c0 = 0, c1 = 0;
 
-                    int a = arr[i][j];
-                    int b = arr[j][n - 1 - i];
-                    int c = arr[n - 1 - i][n - 1 - j];
-                    int d = arr[n - 1 - j][i];
+					if (mat[i][j] == '0') c0++;
+					else c1++;
 
-                    int ones = a + b + c + d;
+					if (mat[j][n - i - 1] == '0') c0++;
+					else c1++;
 
-                    ans += Math.min(ones, 4 - ones);
-                }
-            }
+					if (mat[n - i - 1][n - j - 1] == '0') c0++;
+					else c1++;
 
-            System.out.println(ans);
-        }
+					if (mat[n - j - 1][i] == '0') c0++;
+					else c1++;
 
-        sc.close();
-    }
+					if (c0 == 0 || c1 == 0) continue;
+
+					if (c0 >= c1) {
+						ans += c1;
+						mat[i][j] = '0';
+						mat[j][n - i - 1] = '0';
+						mat[n - i - 1][n - j - 1] = '0';
+						mat[n - j - 1][i] = '0';
+					} else {
+						ans += c0;
+						mat[i][j] = '1';
+						mat[j][n - i - 1] = '1';
+						mat[n - i - 1][n - j - 1] = '1';
+						mat[n - j - 1][i] = '1';
+					}
+				}
+			}
+
+			System.out.println(ans);
+		}
+		scanner.close();
+	}
 }
