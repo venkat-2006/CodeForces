@@ -1,5 +1,5 @@
 import java.util.*;
-public class Solution{//1420B
+public class RockAndLever{//1420B
     public static void main(String args[]){//a + b = (a ^ b) + 2*(a & b)
           Scanner sc=new Scanner(System.in);
           int x=sc.nextInt();
