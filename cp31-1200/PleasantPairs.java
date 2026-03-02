@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class PleasantPairs {
+public class PleasantPairs {//1541B
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int t = scanner.nextInt();
