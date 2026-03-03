@@ -50,6 +50,7 @@ public class PrinzessinderVerurteilung {//1536B
                         String str = "" + c1 + c2 + c3;
                         if (!set.contains(str)) {
                             System.out.println(str);
+                            found = true;
                             break;
                         }
                     }
