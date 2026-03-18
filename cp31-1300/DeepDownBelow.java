@@ -30,7 +30,7 @@ public class DeepDownBelow {//1561C
                     start+=diff;
                     curr+=diff;
                 }
-                curr+=caves[i][0];
+                curr+=caves[i][1];
 
             }
             System.out.println(start);
