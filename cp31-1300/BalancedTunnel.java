@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class BalancedTunnel{//1237B
+public class BalancedTunnel {//1237B
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
 
@@ -14,20 +14,18 @@ public class BalancedTunnel{//1237B
 
         int[] pos = new int[n + 1];
 
-        for (int i = 0; i < n; i++) {
-            pos[a[i]] = i;
-        }
+        for (int i = 0; i < n; i++) pos[a[i]] = i;
 
-        int maxSeen = -1;
-        int fined = 0;
+        int min = Integer.MAX_VALUE;
+        int ans = 0;
 
-        for (int i = 0; i < n; i++) {
+        for (int i = n - 1; i >= 0; i--) {
             int curr = pos[b[i]];
-            if (curr < maxSeen) fined++;
-            else maxSeen = curr;
+            if (curr > min) ans++;
+            min = Math.min(min, curr);
         }
 
-        System.out.println(fined);
+        System.out.println(ans);
 
         sc.close();
     }
