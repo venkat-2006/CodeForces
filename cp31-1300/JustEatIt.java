@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class JustEatIt {
+public class JustEatIt {//1285B
 
     static long kadane(int[] a, int l, int r) {
         long cur = a[l], maxSum = a[l];
