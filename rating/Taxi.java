@@ -13,6 +13,6 @@ public class Taxi {//158B
             while (i <= j && sum + s[i] <= 4) sum += s[i++];
             taxis++;
         }
-        System.out.println(taxis);
+        System.out.println(taxis);  
     }
 }
