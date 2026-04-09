@@ -10,15 +10,12 @@ public class Saraga { // 2045C
         int n = S.length();
         int m = T.length();
 
-        int[] first = new int[26];
-        Arrays.fill(first, -1);
+     
+        int[] last = new int[26];
+        Arrays.fill(last, -1);
 
-    
-        for (int j = 0; j < m; j++) {
-            int c = T.charAt(j) - 'a';
-            if (first[c] == -1) {
-                first[c] = j;
-            }
+        for (int j = 0; j < m - 1; j++) {
+            last[T.charAt(j) - 'a'] = j;
         }
 
         String ans = null;
@@ -26,10 +23,10 @@ public class Saraga { // 2045C
         for (int i = 1; i < n; i++) {
 
             char ch = S.charAt(i);
-            int idx = first[ch - 'a'];
+            int idx = last[ch - 'a'];
 
-            
-            if (idx != -1 && idx < m - 1) {
+    
+            if (idx != -1) {
 
                 String candidate = S.substring(0, i + 1) + T.substring(idx + 1);
 
@@ -39,11 +36,6 @@ public class Saraga { // 2045C
             }
         }
 
-        
-        if (ans == null) {
-            System.out.println("-1");
-        } else {
-            System.out.println(ans);
-        }
+        System.out.println(ans == null ? "-1" : ans);
     }
 }
