@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class InterestingDrink { // 7-6B
+public class InterestingDrink { // 706B
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
 
