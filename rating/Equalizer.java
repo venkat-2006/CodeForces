@@ -14,7 +14,7 @@ public class Equalizer {//2217A
                 sum += sc.nextInt();
             }
             
-            if(sum % 2 == 1 || (n * k) % 2 == 1){
+            if(sum % 2 == 1 || (n * k) % 2 == 0){
                 System.out.println("YES");
             } else {
                 System.out.println("NO");
