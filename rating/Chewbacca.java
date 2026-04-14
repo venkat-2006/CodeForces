@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Chewbaсca { // 514A
+public class Chewbacca { // 514A
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String x = sc.next();
