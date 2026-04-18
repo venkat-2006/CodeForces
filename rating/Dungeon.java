@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Dungeon {//1463A
+public class Dungeon {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
@@ -11,9 +11,12 @@ public class Dungeon {//1463A
             long c = sc.nextLong();
 
             long sum = a + b + c;
-            long max = Math.max(a, Math.max(b, c));
 
-            if (sum % 9 == 0 && max <= sum / 2) {
+            long k = sum / 9;
+
+            long min = Math.min(a, Math.min(b, c));
+
+            if (sum % 9 == 0 && min >= k) {
                 System.out.println("YES");
             } else {
                 System.out.println("NO");
