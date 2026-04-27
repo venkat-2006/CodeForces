@@ -2,37 +2,35 @@ import java.util.*;
 
 public class THU {//2216B
 
+    static void solve(Scanner sc) {
+        long cT = sc.nextLong();
+        long cH = sc.nextLong();
+        long cU = sc.nextLong();
+
+        long totalHeight = 3L * (cT + cH + cU);
+        long savings = 0;
+
+        long pairTU = Math.min(cT, cU);
+        savings += 2L * pairTU;
+        cT -= pairTU;
+
+        long pairH = Math.min(cT, 2L * cH);
+        savings += pairH;
+        cT -= pairH;
+
+        if (cT > 0) {
+            savings += (cT - 1);
+        }
+
+        System.out.println(totalHeight - savings);
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         int t = sc.nextInt();
-
         while (t-- > 0) {
-            long cT = sc.nextLong();
-            long cH = sc.nextLong();
-            long cU = sc.nextLong();
-
-            long x = Math.min(cT, cU);
-            cT -= x;
-            cU -= x;
-
-            long y = Math.min(cT, cH);
-            cT -= y;
-            cH -= y;
-
-            long z = cT / 2;
-            cT -= 2 * z;
-
-            long remaining = cH + cU;
-            long pairs = remaining / 2;
-
-            long ans = 4 * x + 5 * y + 5 * z + 6 * pairs;
-
-            if (remaining % 2 == 1) {
-                ans += 3;
-            }
-
-            System.out.println(ans);
+            solve(sc);
         }
 
         sc.close();
