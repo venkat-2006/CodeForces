@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class GoodSubArrays {
+public class GoodSubArrays {//1736C1
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
