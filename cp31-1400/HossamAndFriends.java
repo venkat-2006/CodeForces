@@ -15,7 +15,7 @@ public class HossamAndFriends {//1771B
                 int x = sc.nextInt();
                 int y = sc.nextInt();
 
-                int a = Math.min(x, y);
+                int a = Math.min(x, y); 
                 int b = Math.max(x, y);
 
                 maxBadLeft[b] = Math.max(maxBadLeft[b], a);
