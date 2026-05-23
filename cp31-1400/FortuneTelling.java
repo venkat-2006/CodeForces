@@ -9,13 +9,13 @@ public class FortuneTelling {//1634B
         while(t-- > 0){
 
             int n = sc.nextInt();
-            int x = sc.nextInt();
-            int y = sc.nextInt();
+            long x = sc.nextLong();
+            long y = sc.nextLong();
 
-            int parity = x % 2;
+            long parity = x % 2;
 
             for(int i = 0; i < n; i++){
-                parity ^= (sc.nextInt() % 2);
+                parity ^= (sc.nextLong() % 2);
             }
 
             if(parity == y % 2){
