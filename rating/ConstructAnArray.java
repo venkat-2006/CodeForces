@@ -8,16 +8,11 @@ public class ConstructAnArray {//2231A
         while (t-- > 0) {
             int n = sc.nextInt();
 
-            if (n == 1) {
-                System.out.println(1);
-                continue;
+            for (int i = 1; i <= n; i++) {
+                System.out.print(2 * i - 1 + " ");
             }
 
-            System.out.print(2 * n + " ");
-            for (int i = 1; i < n; i++) {
-                System.out.print(i + " ");
-            }
-            System.out.println();
+            System.out.print("\n");
         }
     }
 }
