@@ -1,15 +1,19 @@
+import java.io.*;
 import java.util.*;
 
-public class LongestKGoodSegment {//616D
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+public class LongestKGoodSegment { // 616D
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int n = sc.nextInt();
-        int k = sc.nextInt();
+        int n = Integer.parseInt(st.nextToken());
+        int k = Integer.parseInt(st.nextToken());
 
         int[] arr = new int[n];
+
+        st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
+            arr[i] = Integer.parseInt(st.nextToken());
         }
 
         HashMap<Integer, Integer> map = new HashMap<>();
@@ -32,14 +36,14 @@ public class LongestKGoodSegment {//616D
                 left++;
             }
 
-          
             if (right - left > bestRight - bestLeft) {
                 bestLeft = left;
                 bestRight = right;
             }
         }
 
-        
-        System.out.println((bestLeft + 1) + " " + (bestRight + 1));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        bw.write((bestLeft + 1) + " " + (bestRight + 1));
+        bw.flush();
     }
 }
