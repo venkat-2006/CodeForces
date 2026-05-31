@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class FlipTheBit { // 2217B
+public class FlipTheBit {//2217B
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -11,42 +11,33 @@ public class FlipTheBit { // 2217B
             int n = sc.nextInt();
             int k = sc.nextInt();
 
-            int[] a = new int[n];
+            int[] arr = new int[n + 2];
 
-            for (int i = 0; i < n; i++) {
-                a[i] = sc.nextInt();
+            for (int i = 1; i <= n; i++) {
+                arr[i] = sc.nextInt();
             }
 
-            int p = sc.nextInt() - 1;
-            int x = a[p];
+            int pivot = sc.nextInt();
 
-            int ans = 0;
+            arr[0] = arr[pivot];
+            arr[n + 1] = arr[pivot];
 
-            int i = 0;
-            while (i < p) {
-                if (a[i] != x) {
-                    ans++;
-                    while (i < p && a[i] != x) {
-                        i++;
-                    }
-                } else {
-                    i++;
+            int countL = 0;
+            int countR = 0;
+
+            for (int i = 0; i < pivot; i++) {
+                if (arr[i] != arr[i + 1]) {
+                    countL++;
                 }
             }
 
-            i = p + 1;
-            while (i < n) {
-                if (a[i] != x) {
-                    ans++;
-                    while (i < n && a[i] != x) {
-                        i++;
-                    }
-                } else {
-                    i++;
+            for (int i = pivot; i < n + 1; i++) {
+                if (arr[i] != arr[i + 1]) {
+                    countR++;
                 }
             }
 
-            System.out.println(ans);
+            System.out.println(Math.max(countL, countR));
         }
 
         sc.close();
