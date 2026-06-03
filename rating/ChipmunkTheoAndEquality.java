@@ -1,62 +1,117 @@
+import java.io.*;
 import java.util.*;
 
-public class ChipmunkTheoAndEquality { // 2231C
+public class ChipmunkTheoAndEquality {//2231C
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    static class FastScanner {
+        private final InputStream in = System.in;
+        private final byte[] buffer = new byte[1 << 16];
+        private int ptr = 0, len = 0;
 
-        int t = sc.nextInt();
+        private int read() throws IOException {
+            if (ptr >= len) {
+                len = in.read(buffer);
+                ptr = 0;
+                if (len <= 0) return -1;
+            }
+            return buffer[ptr++];
+        }
+
+        int nextInt() throws IOException {
+            int c;
+            do {
+                c = read();
+            } while (c <= ' ');
+
+            int val = 0;
+            while (c > ' ') {
+                val = val * 10 + (c - '0');
+                c = read();
+            }
+            return val;
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        FastScanner fs = new FastScanner();
+        StringBuilder sb = new StringBuilder();
+
+        int t = fs.nextInt();
 
         while (t-- > 0) {
 
-            int n = sc.nextInt();
+            int n = fs.nextInt();
 
             int[] a = new int[n];
             for (int i = 0; i < n; i++) {
-                a[i] = sc.nextInt();
+                a[i] = fs.nextInt();
             }
 
-            HashMap<Integer, Integer> cnt = new HashMap<>();
-            HashMap<Integer, Long> cost = new HashMap<>();
+            HashMap<Integer, Integer> cnt1 = new HashMap<>();
+            HashMap<Integer, Long> cnt2 = new HashMap<>();
 
-            for (int x : a) {
+            int x = a[0];
 
-                HashSet<Integer> seen = new HashSet<>();
+            HashSet<Integer> s = new HashSet<>();
+            long c = 0;
 
-                int cur = x;
-                long steps = 0;
+            while (!s.contains(x)) {
 
-                while (!seen.contains(cur)) {
+                cnt1.put(x, 1);
+                cnt2.put(x, c);
 
-                    seen.add(cur);
+                s.add(x);
 
-                    cnt.put(cur, cnt.getOrDefault(cur, 0) + 1);
-                    cost.put(cur, cost.getOrDefault(cur, 0L) + steps);
+                if ((x & 1) == 1) {
+                    x++;
+                } else {
+                    x >>= 1;
+                }
 
-                    if ((cur & 1) == 0) {
-                        cur /= 2;    
-                    } else {
-                        cur += 1;    
+                c++;
+            }
+
+            for (int i = 1; i < n; i++) {
+
+                x = a[i];
+                s.clear();
+                c = 0;
+
+                while (!s.contains(x)) {
+
+                    if (cnt1.containsKey(x)) {
+                        cnt1.put(x, cnt1.get(x) + 1);
+                        cnt2.put(x, cnt2.get(x) + c);
                     }
 
-                    steps++;
+                    s.add(x);
+
+                    if ((x & 1) == 1) {
+                        x++;
+                    } else {
+                        x >>= 1;
+                    }
+
+                    c++;
                 }
             }
 
-            long ans = Long.MAX_VALUE;
+            long ans = (long) 1e18;
 
-            for (Map.Entry<Integer, Integer> entry : cnt.entrySet()) {
+            for (Map.Entry<Integer, Integer> entry : cnt1.entrySet()) {
 
-                int value = entry.getKey();
+                int key = entry.getKey();
+                int value = entry.getValue();
 
-                if (entry.getValue() == n) {
-                    ans = Math.min(ans, cost.get(value));
+                if (value == n) {
+                    ans = Math.min(ans, cnt2.get(key));
                 }
             }
 
-            System.out.println(ans);
+            sb.append(ans).append('\n');
         }
 
-        sc.close();
+        System.out.print(sb);
     }
 }
