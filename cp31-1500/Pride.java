@@ -1,5 +1,5 @@
 import java.util.*;
-public class Pride {
+public class Pride {//891A
     static int gcd(int a, int b) {
         while (b != 0) {
             int t = a % b;
