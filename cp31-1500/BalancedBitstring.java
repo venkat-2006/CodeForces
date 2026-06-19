@@ -12,16 +12,21 @@ public class BalancedBitstring {//1404A
 
             boolean possible=true;
 
-            for(int i=0;i<n-k;i++){
-                if(s[i]=='?' && s[i+k]=='?') continue;
+            for(int i=k;i<n;i++){
+                int j=i%k;
 
-                if(s[i]=='?'){
-                    s[i]=s[i+k];
-                }else if(s[i+k]=='?'){
-                    s[i+k]=s[i];
-                }else if(s[i]!=s[i+k]){
-                    possible=false;
-                    break;
+                if(s[i]=='1'){
+                    if(s[j]=='0'){
+                        possible=false;
+                        break;
+                    }
+                    s[j]='1';
+                }else if(s[i]=='0'){
+                    if(s[j]=='1'){
+                        possible=false;
+                        break;
+                    }
+                    s[j]='0';
                 }
             }
 
