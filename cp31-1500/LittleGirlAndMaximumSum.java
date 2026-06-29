@@ -1,14 +1,31 @@
+import java.io.*;
 import java.util.*;
 
 public class LittleGirlAndMaximumSum {//276C
-    public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
+
+    static class FastScanner{
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        String next() throws Exception{
+            while(st==null||!st.hasMoreElements())
+                st=new StringTokenizer(br.readLine());
+            return st.nextToken();
+        }
+
+        int nextInt() throws Exception{
+            return Integer.parseInt(next());
+        }
+    }
+
+    public static void main(String args[]) throws Exception{
+        FastScanner sc=new FastScanner();
 
         int n=sc.nextInt();
         int q=sc.nextInt();
 
-        long a[]=new long[n+1];
-        for(int i=1;i<=n;i++)
+        long a[]=new long[n];
+        for(int i=0;i<n;i++)
             a[i]=sc.nextInt();
 
         long diff[]=new long[n+2];
@@ -27,18 +44,13 @@ public class LittleGirlAndMaximumSum {//276C
             freq[i-1]=cur;
         }
 
-        long arr[]=new long[n];
-        for(int i=1;i<=n;i++)
-            arr[i-1]=a[i];
-
-        Arrays.sort(arr);
+        Arrays.sort(a);
         Arrays.sort(freq);
 
         long ans=0;
         for(int i=0;i<n;i++)
-            ans+=arr[i]*freq[i];
+            ans+=a[i]*freq[i];
 
         System.out.println(ans);
-        sc.close();
     }
 }
