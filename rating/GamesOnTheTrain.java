@@ -1,5 +1,5 @@
 import java.util.*;
-public class GamesOnTheTrain{//2032A
+public class GamesOnTheTrain{//2236A
     public static void main(String[]args){
         Scanner sc=new Scanner(System.in);
         int t=sc.nextInt();
