@@ -1,46 +1,47 @@
 import java.util.*;
 
-public class DistinctValues {//2253C
-    public static void main(String args[]) {
+public class DistinctValues{//2253C
+    public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
-        int t=sc.nextInt();
+        int TestsNumT=sc.nextInt();
 
-        while(t-->0) {
-            int n=sc.nextInt();
-            int m=sc.nextInt();
-            int x=sc.nextInt();
-            int y=sc.nextInt();
+        while(TestsNumT-->0){
+            int n=sc.nextInt(),m=sc.nextInt(),x=sc.nextInt(),y=sc.nextInt();
+            int[] a=new int[x],b=new int[y];
 
-            int[] a=new int[x];
             for(int i=0;i<x;i++) a[i]=sc.nextInt();
-
-            int[] b=new int[y];
             for(int i=0;i<y;i++) b[i]=sc.nextInt();
 
             int i=x-1,j=y-1;
+            int ca=0,cb=0,cnt=0;
             long ans=0;
-            int rows=0,cols=0;
 
-            while(i>=0&&j>=0) {
-                if(a[i]>b[j]) {
-                    ans+=a[i--];
-                    rows++;
-                } else {
-                    ans+=b[j--];
-                    cols++;
+            while(i>=0||j>=0){
+                int v;
+                boolean ina=false,inb=false;
+
+                if(j<0||i>=0&&a[i]>b[j]){
+                    v=a[i--];
+                    ina=true;
+                }else if(i<0||b[j]>a[i]){
+                    v=b[j--];
+                    inb=true;
+                }else{
+                    v=a[i--];
+                    j--;
+                    ina=inb=true;
                 }
 
-                if(rows==n||cols==m) break;
-            }
+                if(cnt==n+m-1) break;
 
-            while(i>=0&&rows<n) {
-                ans+=a[i--];
-                rows++;
-            }
+                if(ina&&!inb&&ca==n) continue;
+                if(inb&&!ina&&cb==m) continue;
 
-            while(j>=0&&cols<m) {
-                ans+=b[j--];
-                cols++;
+                if(ina&&!inb) ca++;
+                if(inb&&!ina) cb++;
+
+                ans+=v;
+                cnt++;
             }
 
             System.out.println(ans);
