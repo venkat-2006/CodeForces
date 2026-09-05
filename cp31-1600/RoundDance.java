@@ -34,7 +34,15 @@ public class RoundDance {//1833E
                 if(find(i)==i) max++;
             }
 
-            System.out.println(max);
+            int pairs=0;
+            for(int i=1;i<=n;i++){
+                if(a[a[i]]==i) pairs++;
+            }
+            pairs/=2;
+
+            int min=max-pairs+(pairs>0?1:0);
+
+            System.out.println(min+" "+max);
         }
     }
 }
