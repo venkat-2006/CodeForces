@@ -1,0 +1,32 @@
+// Arrange the Numbers in a Circle
+import java.util.*;
+public class ArrangeTheNumbersInACircle {//2230C
+    public static void main(String[]args) {
+        Scanner s=new Scanner(System.in);
+        int multTestQ=s.nextInt();
+        while(multTestQ-->0) {
+            int n=s.nextInt();
+            long ones=0,others=0,cap=0;
+
+            for(int i=0;i<n;i++) {
+                long x=s.nextLong();
+                if(x==1)
+                    ones++;
+                else {
+                    others+=x;
+                    if(x>3)
+                        cap+=(x-2)/2;
+                }
+            }
+
+            if(ones+others<3)
+                System.out.println(0);
+            else if(cap>=ones)
+                System.out.println(others+ones);
+            else if(ones==n-1)
+                System.out.println(others+cap+1);
+            else
+                System.out.println(others+cap);
+        }
+    }
+}
